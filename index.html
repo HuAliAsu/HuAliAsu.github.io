@@ -181,4 +181,264 @@ const D = [
   {id:20, cat:"trans", n:"ویرایشگر Side-by-side قرارداد دونیمه‌ای ملی", s:"نشان دادن هنر درگ‌دراپ در نرم افزار قرادادساز ترکیه/ایرانی", d:"سمت راست پاراگراف ترک، کنارش بخش ایرانی با هوش منطبق می‌شود تا هیچ ماده‌ پنهان نماند.", stk:"Web IDE React Monaco + Prompt Sync", inc:"اثبات توانمندی دیزاین نرم افزار فرمی", sk:5, vib:5},
   {id:21, cat:"trans", n:"داشبورد لندینگ لوکالایزر(Site Cloner B2B)", s:"محلی ساز سایت ها به طعم فرهنگ محلی(نه ترجمه ماشینی)", d:"نشان‌دادن اینکه میتوانید فرم‌ها، جای دکمه و تصاویر(به واسطه RTL/LTR بودن) هم راستا با پرامپتی هوشمند استایل بندی و روی Editor ارائه مجدد بدین.", stk:"AST tree + Claude Logic API", inc:"ارتقاء مهندسی طراحی Frontend شما", sk:5, vib:3},
   {id:22, cat:"trans", n:"صفحه ساز پویای بروشور صنعت ترکی/انگلیسی", s:"حفظ گرافیک مجله‌ی کاتالوگ صنعتی حین ترجمه به کلمات روز", d:"ابزار از طراح میخواهد بلوک متن رو بکشد و AI در حین ترجمه آن با یک افکت انیمیشن، استایل فونت هم تنظیم میکند روی فضای Layout خروجی مجدد بگیرد.", stk:"Canvas editor + System Prompt translator", inc:"کار آژانس واردات تجهیزات برایتان هست", sk:5, vib:4},
-  {id:23, cat:"trans", n:"دستیار پزشک توریست‌پذیر( Medical Terminology overlay )", s:"گزارشات و لابراتوارها را به یک Dashboard بهداشت ترک بازتعریف کند", d:"پرونده PDF بیمارهایی ایرانی با ورودش به یک فضای کارتابل با رابط جذاب مدیکالی! گراف‌های سلامتی ویژ
+  {id:23, cat:"trans", n:"دستیار پزشک توریست‌پذیر( Medical Terminology overlay )", s:"گزارشات و لابراتوارها را به یک Dashboard بهداشت ترک بازتعریف کند", d:"پرونده PDF بیمارهایی ایرانی با ورودش به یک فضای کارتابل با رابط جذاب مدیکالی! گراف‌های سلامتی ویژوال میسازه به دکتر ترک در میز کار میدهد.", stk:"Health UI dashboard framework AI", inc:"مدیکال توریسم همیشه استخدام میکنه", sk:4, vib:4},
+  {id:24, cat:"trans", n:"همیار اِدِولَتِ مرورگر(E-Devlet Visual Overlay plugin)", s:"اکستنشِ کروم برای تزریقِ بالون‌های کمکی فرم روی صفحات ترکیه.", d:"طراحی Tooltipها و Label هایِ شناور فوقِ کاربرپسند روی صفحه‌آرایی سایت های بومی، نشانگر شناختِ بی بدیل شما به Front است.", stk:"Chrome Manifest V3 Content Injection", inc:"استارتاپ‌ها مهاجران استخدامِ‌فوری میکنند", sk:5, vib:5},
+  {id:25, cat:"trans", n:"رزومه‌نگار بهینهِ تصویری در قالب‌های روز 유럽ی-ATS", s:"اپ‌ساز آنلاین ساخت‌رزومه‌شغلی مبتنی بر قالب‌های استاندارد", d:"ورودی رزومه لینکدین، و استودیو بصری هوشمندی با فونت مدرن قالب هایی میدهد و با Prompt در یک نگاه ایرادات ادبی رزومه رو اصلاح می‌کند.", stk:"Live UI editor engine", inc:"سرویس ابزاری و B2C پر طرفدار", sk:5, vib:5},
+  {id:26, cat:"rehab", n:"پازل‌ بوردِ اتوماتیک مهارت‌ها (NGO matching UI)", s:"محیط Trello-like مدیریت برای نیازمند نیرو و کمک دهنده بصورت Gamified", d:"الگوریتم درخواست های آنان را بصورت پروژه محور بین داوطلبین همکار با زمان محدود مچ و پوینت گذاری می کند.", stk:"Drag n Drop lists react Vibe mode", inc:"حوزه مسئولیت های اجتماعی سازمان‌ها", sk:4, vib:4},
+  {id:27, cat:"rehab", n:"قصه‌ساز مصور با کتابگردون لمسی(Mini-story touch Engine)", s:"تولیدگر داستانی کتاب کودک مصور و آرام‌بخش اختصاصی تراپیست", d:"رابط باید احساس امنیت دهد. AI قصه و و گرافیک Midjourney ترکیب روی فضای Flip-book وب نمایش میدهد.", stk:"AI book page CSS turner logic", inc:"محصولی در حیطه EdTech کودکان", sk:5, vib:4},
+  {id:28, cat:"rehab", n:"سازنده بورد کارت‌تصویریِ برنامه‌کودک اوتیسم", s:"ساخت Printable Board اختصاصی رویدادها. به شدت مهم برای مربی.", d:"از هوش موضوع کودک پرسیده شده و در پنلی ۴تایی تصاویری درگ و دراپِ ساده استایل شده و دکمه‌ تولید برای پیرینت تحویل میده.", stk:"Board config + Canvas Output rendering", inc:"در رزومه استارتاپهای توان بخشی عالیست", sk:5, vib:4},
+  {id:29, cat:"rehab", n:"اکستنشن ساده‌ساز رابطِ اینترنتی بیماران(Simplify Web tool)", s:"یک محصول دکمه‌ای شناور برای ساده/مینیمال/ درشت‌کردن ظاهرِ وبسایت.", d:"هوش مصنوعی متون غیرمهم، حواس‌پرتی را Drop میکند با تخصص CSS ساختاری ساده تحویل سالمندان قرارمیده.", stk:"DOM AI simplification", inc:"بهترین ایده به عنوان Senior Product design", sk:5, vib:4},
+  {id:30, cat:"rehab", n:"یادآور بازی‌طوری برای سالمند بر مبنای سرگرمی شخصی", s:"خلق صفحه اختصاصی خاطرات با پرامپت داینامیک.", d:"فرزند میگوید پدرم به گل شمعدونی علاقه داره اپ بازی چرخونِ زیبایی پر از گل میکند تا دکمه بخورد و عکس درشت نوستالژیک ببینند.", stk:"Animated SPA web interface", inc:"پتانسیل ساخت نرم افزار نگهداری سالمند", sk:5, vib:3},
+  {id:31, cat:"rehab", n:"سردبیر فرمول گرنت(Bounty and grant Proposoal Canvas)", s:"ایده و اعداد خیریه از کاربر، صفحات قانع کننده با چارتها گرافیکی تحویل از UI", d:"درخواست کمک نیازمند صفحه‌آرایی گرافیکی مستحکم روی کلمه است و هیچکس از یک طراح Prompt قوی در این مسیر دریغ نمی‌کند.", stk:"PDF format logic Vibe Prompt Template", inc:"NGO سازمان ملل - حقوق پایه عالیه", sk:5, vib:5},
+  {id:32, cat:"rehab", n:"بورد آموزشی حس شناسی‌ تعاملی اوتیسمِ کودکان", s:"تبدیل Prompt به صفحه ای با احساس که احساس آموزش می دهد", d:"دیزاین چهره‌اواوتار تغییر کننده توسط خروجیِ سیستم Promoptها بسیار پیچیده! ترکیب کار UI دیزاین کارفرما می فهمه با یک ایده ی قدرتمند Product آشناست.", stk:"Bot visual Face render prompt-engineering", inc:"B2C محصولات سرگرمی خاص در EdTech", sk:4, vib:4},
+  {id:33, cat:"prompt", n:"محیط لابراتوار A/B نبرد پرامپت‌ها(Prompt Lab Web App)", s:"طراحی Playground اختصاصی با دوستون که خروجی هر پارامتر را لایو نشان دهد", d:"ارزشمندترین رزومه در چشم دولوپر‌های بک‌اِند یک شرکت است: پلتفرمی با UI بی‌نقص بزنی که سیستم پرامپت‌های ضعیف برنامه‌نویساشون رو بصری بررسی کند.", stk:"Logic Dashboard React.js Prompt chain", inc:"دستیابی عنوان Prompt/AI Product manager", sk:5, vib:5},
+  {id:34, cat:"prompt", n:"سیستم واسط Auto-prompt Tuning Editor", s:"ارسال سوال احمقانه -> به یک جمله کارگاهی پرامپت مهندسی", d:"ابزاری که کد UI دارد و می‌تواند بقیه اَپ‌ها را بهتر درک‌مند کند چون شما تسلط پرامپت بالایی دارین میتونه برای خود دولوپر ابزار مهم باشه!", stk:"Input Modifier SDK Prompt AI architecture", inc:"عالی‌برای Hiring در B2B Product Teams", sk:5, vib:3},
+  {id:35, cat:"prompt", n:"پنل مدیریت کارخانه‌های SEO مبتنی‌ بر درخت‌های ذهنیِ Node Editor", s:"پیکربندی استراتژی SEO طولانی محتوا بصورت گره (Flow builder canvas app)", d:"رابطش مثل فیگماست تا Nodeهایی از وظایف پرامپتی هوش روی یک مسیر با هم برخورد کنند و سرانجام Blog ایجاد شود. رزومه تمام عیار!", stk:"Web flow / Nodes-react/ JS Flowboard AI", inc:"بازاری‌ترین ایده‌ی B2B محتوا تو حوزه تبلیغات", sk:5, vib:2},
+  ...generateExtraVisualIdeas(36)
+];
+
+function generateExtraVisualIdeas(startIdx) {
+  const ex = [];
+  let idBase = startIdx;
+  const tCat = ["ui","dash","ui","trans","arch","prompt","rehab"];
+  for(let i=0; i<38; i++){
+      ex.push({
+          id: idBase++, cat: tCat[i%7],
+          n: `رابطِ ویژوال / هوشمند ابزار ${i+30} [محیط کار اختصاصی ساز]`, 
+          s: "تبدیل پارامتر هوش به محیط وب کاملاً ریسپانسیو و پوینت گذاری با کشیدن کارت(UX pattern)",
+          d: "ورود مشتری، درک داده به کمک هوش روی صفحات وب و دادن خروجی بصری (پای‌چارت، گیف، فرم استایلیزه). نیازی به سرور دیتابیس ندارید کل فرایند با Agent مرورگر هرمس قابل پردازش لحظه‌ای میتونه در LocalStorage ذخیره بشه.",
+          stk: "AI Frontend Builder Framework / CSS Canvas DOM",
+          inc: "جایگاه یابی محصول یا نمایش Portfolio UI",
+          sk: 4, vib: 4
+      });
+  }
+  return ex;
+}
+
+// State
+let favs = new Set(JSON.parse(localStorage.getItem('vivajobs_favs') || "[]"));
+let deletedIds = new Set(JSON.parse(localStorage.getItem('vivajobs_deleted') || "[]"));
+let showFavsOnly = false;
+let cFilter = "", sSort = "null";
+let hasSwiped = false; // جلوگیری از کلیک هنگام کشیدن
+
+// Fuzzy Search Algorithm
+function fuzzyMatch(query, text) {
+  if (!query) return true;
+  query = query.toLowerCase().replace(/\s+/g, '');
+  text = text.toLowerCase();
+  let queryIdx = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === query[queryIdx]) {
+      queryIdx++;
+    }
+    if (queryIdx === query.length) return true;
+  }
+  return false;
+}
+
+function toggleFavShow() {
+  showFavsOnly = !showFavsOnly;
+  const btn = document.getElementById('btnFavShow');
+  if(showFavsOnly) btn.classList.add('active');
+  else btn.classList.remove('active');
+  render();
+}
+
+function handleSelect(val) {
+  cFilter = ""; sSort = "null";
+  if (val.startsWith("cat_")) cFilter = val.replace("cat_", "");
+  else if (val.startsWith("sort_")) sSort = val.replace("sort_", "");
+  render();
+}
+
+function toggleFav(id, ev) {
+  ev.stopPropagation();
+  if(favs.has(id)) favs.delete(id); else favs.add(id);
+  localStorage.setItem('vivajobs_favs', JSON.stringify([...favs]));
+  render();
+}
+
+function toggleCard(id, ev) {
+  if (hasSwiped) return; 
+  if (ev.target.closest('.heart')) return; // عدم تداخل با دکمه قلب
+  
+  const card = document.getElementById(`card-${id}`);
+  
+  // بستن بقیه کارت‌ها (اختیاری - اگر می‌خواهید فقط یکی باز بماند)
+  document.querySelectorAll('.card.expanded').forEach(c => {
+    if(c.id !== `card-${id}`) c.classList.remove('expanded');
+  });
+
+  card.classList.toggle('expanded');
+  
+  // اسکرول نرم به سمت کارت باز شده
+  if(card.classList.contains('expanded')) {
+    setTimeout(() => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 350);
+  }
+}
+
+function copyPrompt(id, ev) {
+  ev.stopPropagation();
+  const d = D.find(x => x.id === id);
+  const textPrompt = `من طراح محصول، متخصص پرامپتینگ پیشرفته و سازنده‌ی اپ (Vibe-coder بدون تمرکز بر برنامه‌نویسی پیچیده‌ی Back-end) هستم و رزومه پروداکت دیزاین/استارتاپ برایم مهم است.\nما اپلیکیشن «${d.n}» رو خلق می‌کنیم. محیط نباید متنی/چتی باشه؛ باید رابط وب(App-based/داشبوردی/محیط کانواس-ادیتوری)، پرِ از کامپوننت گرافیکی و UI باشد!\nسناریو: ${d.s}\nتوجیه محصول: ${d.d}\nبا کتابخانه مدرنی مثل Tailwind CSS / React (Single page app بدون دیتابیس خارجی سنگین، کلاینت‌بیس) اینو شروع کن بنویس و از من استپ‌های بررسی Prompt Engine logic شو تایید بگیر. ساختار بده اول.`;
+  
+  navigator.clipboard.writeText(textPrompt).then(() => {
+    const btn = ev.target;
+    const originalText = btn.textContent;
+    btn.textContent = "✓ کپی شد! در هرمس پیست کنید";
+    btn.style.background = "#10B981";
+    setTimeout(() => { 
+      btn.textContent = originalText; 
+      btn.style.background = "var(--color-accent)"; 
+    }, 2500);
+  });
+}
+
+function drawSegs(val, cl) {
+  let s = '';
+  for(let i=1; i<=5; i++) { s += `<div class="dsc-seg ${i<=val ? cl : ''}"></div>`; }
+  return s;
+}
+
+function render() {
+  const q = document.getElementById("q").value.trim();
+  
+  let list = D.filter(d => {
+    if(deletedIds.has(d.id)) return false; // کارت‌های حذف شده
+    if(showFavsOnly && !favs.has(d.id)) return false;
+    if(cFilter && d.cat !== cFilter) return false;
+    if(q && !fuzzyMatch(q, d.n) && !fuzzyMatch(q, d.s)) return false;
+    return true;
+  });
+  
+  if(sSort === "skill") list.sort((a,b) => b.sk - a.sk);
+  if(sSort === "vibe") list.sort((a,b) => b.vib - a.vib);
+
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
+  document.getElementById("cnt").textContent = `${list.length} ایده`;
+  
+  if(!list.length){
+     grid.innerHTML = `<div class="none">ایده‌ای یافت نشد.</div>`;
+     return;
+  }
+  
+  list.forEach(d => {
+    const c = cats[d.cat] || cats["ui"];
+    const isFav = favs.has(d.id);
+    const div = document.createElement("div");
+    div.className = "card";
+    div.id = `card-${d.id}`;
+    div.dataset.id = d.id;
+    
+    div.innerHTML = `
+      <div class="card-header" onclick="toggleCard(${d.id}, event)">
+        <button class="heart ${isFav?'fav':''}" onclick="toggleFav(${d.id}, event)" title="${isFav?'حذف نشان':'نشان کردن'}">${isFav?'♥':'♡'}</button>
+        <span class="ctag" style="background:${c.lbg};color:${c.lc}">${c.label}</span>
+        <div class="cname">${d.n}</div>
+        <div class="csub">${d.s}</div>
+      </div>
+      
+      <div class="card-details-wrapper">
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="dd"><b>ماموریت:</b> ${d.s}<br><br>🎯 <b>دلیل استخدام‌آوری:</b> ${d.d}</div>
+            
+            <div class="dmeta">
+              <div class="meta-box"><div class="dml">تکنولوژی (Vibe Stack)</div><div class="dmv" style="color:var(--color-accent)">${d.stk}</div></div>
+              <div class="meta-box" style="border:none;"><div class="dml">جذابیت برای شرکت‌ها</div><div class="dmv">${d.inc}</div></div>
+            </div>
+
+            <div class="dscore">
+              <div class="dsc">
+                <div class="dsc-lbl">شانس قبولی (نمایش UI)</div>
+                <div class="dsc-bar">${drawSegs(d.sk, 'f')}</div>
+              </div>
+              <div class="dsc">
+                <div class="dsc-lbl">راحتی ساخت (Vibe Code)</div>
+                <div class="dsc-bar">${drawSegs(d.vib, 'f')}</div>
+              </div>
+            </div>
+            
+            <button class="dbtn" onclick="copyPrompt(${d.id}, event)">🚀 پرامپت استارتر این را به من بده</button>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+// Swipe to Delete Logic (Right Swipe)
+let touchStartX = 0, touchStartY = 0, touchCurrentX = 0;
+let isSwiping = false, isScrolling = false;
+let swipedCard = null;
+
+document.addEventListener('touchstart', e => {
+  const card = e.target.closest('.card');
+  if(!card) return;
+  swipedCard = card;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  isSwiping = false; isScrolling = false; hasSwiped = false;
+  card.style.transition = 'none';
+}, {passive: true});
+
+document.addEventListener('touchmove', e => {
+  if(!swipedCard) return;
+  touchCurrentX = e.touches[0].clientX;
+  const touchCurrentY = e.touches[0].clientY;
+  const diffX = touchCurrentX - touchStartX;
+  const diffY = touchCurrentY - touchStartY;
+
+  if (!isSwiping && !isScrolling) {
+    if (Math.abs(diffY) > Math.abs(diffX)) {
+      isScrolling = true; // کاربر در حال اسکرول بالا/پایین است
+    } else if (Math.abs(diffX) > 15) {
+      isSwiping = true; // کاربر در حال کشیدن افقی است
+    }
+  }
+
+  // در زبان فارسی (RTL)، کشیدن به راست یعنی diffX مثبت باشد
+  if (isSwiping && diffX > 0) { 
+    e.preventDefault(); // جلوگیری از اسکرول مرورگر
+    swipedCard.style.transform = `translateX(${diffX}px)`;
+    swipedCard.style.opacity = 1 - (diffX / window.innerWidth);
+    hasSwiped = true;
+  }
+}, {passive: false});
+
+document.addEventListener('touchend', e => {
+  if(!swipedCard) return;
+  swipedCard.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+  const diffX = touchCurrentX - touchStartX;
+
+  if (isSwiping && diffX > window.innerWidth * 0.25) {
+    // حذف کارت اگر بیش از 25% صفحه کشیده شد
+    swipedCard.style.transform = `translateX(100%)`;
+    swipedCard.style.opacity = 0;
+    const id = parseInt(swipedCard.dataset.id);
+    setTimeout(() => {
+      deletedIds.add(id);
+      localStorage.setItem('vivajobs_deleted', JSON.stringify([...deletedIds]));
+      render();
+    }, 300);
+  } else if (isSwiping) {
+    // برگشت به حالت اول اگر کم کشیده شد
+    swipedCard.style.transform = `translateX(0)`;
+    swipedCard.style.opacity = 1;
+    setTimeout(() => hasSwiped = false, 50); // ریست کردن فلگ با کمی تاخیر
+  }
+  
+  swipedCard = null;
+  isSwiping = false;
+  isScrolling = false;
+});
+
+render();
+</script>
+</body>
+</html>
