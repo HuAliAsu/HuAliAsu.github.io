@@ -2,18 +2,24 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>۷۳ ایده‌ی ماشین استخدام AI Product Builder</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 <style>
-:root{
+:root {
   --color-bg:#F8FAFC; --color-card:#FFFFFF; --color-text:#0F172A;
   --color-text-sec:#475569; --color-text-mut:#94A3B8; --color-border:#E2E8F0;
   --color-border-hv:#CBD5E1; --color-accent:#4F46E5; --color-heart:#F43F5E;
   --border-radius-lg: 16px; --border-radius-md: 10px;
 }
-body { margin: 0; font-family: "Vazirmatn", sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.5; padding-bottom: 40px;}
-*{box-sizing:border-box}
+body { 
+  margin: 0; padding: 0; font-family: "Vazirmatn", sans-serif; 
+  background: var(--color-bg); color: var(--color-text); 
+  line-height: 1.5; padding-bottom: 40px;
+  overflow-x: hidden; /* جلوگیری از لق زدن صفحه */
+  width: 100vw;
+}
+* { box-sizing: border-box; }
 button, input, select { font-family: "Vazirmatn", sans-serif; outline: none; }
 
 /* Sticky Compact Topbar */
@@ -22,353 +28,157 @@ button, input, select { font-family: "Vazirmatn", sans-serif; outline: none; }
   background: rgba(248, 250, 252, 0.85);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; width: 100%; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
 }
-.filters-left { display: flex; flex: 1; align-items: center; gap: 12px; min-width: 280px;}
-.filters-right { display: flex; align-items: center; gap: 10px; }
-
-input[type=search]{
-  flex: 1; min-width: 150px; padding: 8px 14px; font-size: 13px;
+.search-box { flex: 1; min-width: 120px; position: relative; }
+input[type=search] {
+  width: 100%; padding: 8px 14px; font-size: 13px;
   border-radius: 20px; border: 1px solid var(--color-border);
   background: var(--color-card); color: var(--color-text); transition: all .2s;
 }
-input[type=search]:focus{ border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);}
+input[type=search]:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+.cnt { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size:11px; color:var(--color-text-mut); font-weight: 600; pointer-events: none;}
+
+.actions { display: flex; align-items: center; gap: 8px; }
 .form-select {
-  padding: 8px 30px 8px 14px; font-size: 13px; font-weight: 500;
+  padding: 8px 28px 8px 12px; font-size: 12px; font-weight: 600;
   border-radius: 20px; border: 1px solid var(--color-border);
   background-color: var(--color-card); color: var(--color-text-sec);
   appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill="%2394A3B8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat; background-position: left 8px center; cursor: pointer; transition:.2s;
+  background-repeat: no-repeat; background-position: left 8px center; cursor: pointer; transition:.2s; max-width: 160px;
 }
 .form-select:hover { border-color: var(--color-border-hv); }
-
-.cnt { font-size:12px; color:var(--color-text-mut); white-space:nowrap; font-weight: 600;}
-.fav-btn{
-  display:inline-flex; align-items:center; justify-content: center; width: 36px; height: 36px; 
+.fav-btn {
+  display:inline-flex; align-items:center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0;
   font-size: 16px; border-radius: 50%; background:#FFF0F2; color:var(--color-heart); 
-  border:1px solid #FFE4E6; cursor:pointer; font-weight:600; transition:.2s;
+  border:1px solid #FFE4E6; cursor:pointer; transition:.2s;
 }
-.fav-btn.active{background:var(--color-heart);color:#fff;border-color:var(--color-heart); box-shadow: 0 0 8px rgba(244, 63, 94, 0.3);}
+.fav-btn.active { background:var(--color-heart); color:#fff; border-color:var(--color-heart); box-shadow: 0 0 8px rgba(244, 63, 94, 0.3); }
 
 /* Grid System */
-.grid { padding: 24px 20px; display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:18px;}
+.grid { padding: 20px 16px; display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; width: 100%; }
+
+/* Card Styling */
 .card {
   background:var(--color-card); border:1px solid var(--color-border);
-  border-radius:var(--border-radius-lg); padding:1.25rem;
-  cursor:pointer; transition:all .2s; position:relative;
+  border-radius:var(--border-radius-lg); 
+  cursor:pointer; position:relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  touch-action: pan-y; /* اجازه اسکرول عمودی اما کنترل افقی با JS */
 }
-.card:hover{ border-color:var(--color-border-hv); transform:translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
-.card.sel { border: 2px solid var(--color-accent) !important; padding: calc(1.25rem - 1px); box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08);}
+.card-header { padding: 1.25rem; position: relative; z-index: 2; background: var(--color-card); border-radius:var(--border-radius-lg); }
+.card.expanded { border: 2px solid var(--color-accent); box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08); }
+.card.expanded .card-header { padding-bottom: 0; }
 
-.heart { position:absolute; top:16px; left:16px; font-size:22px; color:var(--color-border-hv); transition:all .2s; background:none; border:none; padding:0; cursor:pointer;}
-.heart.fav{color:var(--color-heart);}
-.heart:hover{transform:scale(1.1);}
+.heart { position:absolute; top:16px; left:16px; font-size:22px; color:var(--color-border-hv); transition:all .2s; background:none; border:none; padding:0; cursor:pointer; z-index: 10;}
+.heart.fav { color:var(--color-heart); }
+.heart:hover { transform:scale(1.1); }
 
-.ctag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:24px;display:inline-block;margin-bottom:12px;letter-spacing:0.3px;}
-.cname{font-size:15px;font-weight:800;color:var(--color-text);line-height:1.4;margin-bottom:6px;padding-left: 20px;}
-.csub{font-size:13px;color:var(--color-text-sec);line-height:1.6;}
-.none{text-align:center;padding:4rem;color:var(--color-text-sec);font-size:15px;grid-column:1/-1;}
+.ctag { font-size:10px; font-weight:700; padding:4px 10px; border-radius:24px; display:inline-block; margin-bottom:12px; letter-spacing:0.3px; }
+.cname { font-size:15px; font-weight:800; color:var(--color-text); line-height:1.4; margin-bottom:6px; padding-left: 20px; }
+.csub { font-size:13px; color:var(--color-text-sec); line-height:1.6; }
 
-/* Overlay Backdrop */
-.overlay {
-  position: fixed; top: 0; right: 0; width: 100vw; height: 100vh;
-  background: rgba(15, 23, 42, 0.3); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
-  z-index: 150; opacity: 0; visibility: hidden; transition: 0.3s ease;
+/* Accordion Details */
+.card-details-wrapper {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.overlay.show { opacity: 1; visibility: visible; }
-
-/* Side Drawer Styling */
-.drawer {
-  position: fixed; top: 0; left: -460px; /* sliding from left considering dir=rtl (Wait, RTL screen is from right side. so 'right: -460px')*/
-  width: 100%; max-width: 420px; height: 100vh; background: var(--color-card);
-  z-index: 200; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.1); padding: 24px; overflow-y: auto; display:flex; flex-direction: column;
+.card.expanded .card-details-wrapper { grid-template-rows: 1fr; }
+.card-details { overflow: hidden; }
+.card-details-inner {
+  padding: 16px 1.25rem 1.25rem; margin-top: 12px;
+  border-top: 1px dashed var(--color-border); background: #FAFAFA;
+  border-bottom-left-radius: var(--border-radius-lg); border-bottom-right-radius: var(--border-radius-lg);
 }
-html[dir="rtl"] .drawer { left: auto; right: -460px; }
-.drawer.open { right: 0 !important; }
 
-.drawer-top { display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px; }
-.close-btn { background: #F1F5F9; border:none; width: 34px; height: 34px; border-radius:50%; font-size:18px; cursor:pointer; color: var(--color-text-sec); display:flex; align-items:center; justify-content:center; transition:.2s;}
-.close-btn:hover { background: #E2E8F0; color: #000; transform: scale(1.05); }
+.dd { font-size:13.5px; color:var(--color-text-sec); line-height:1.8; margin-bottom:20px; }
+.dmeta { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.meta-box { border-right: 3px solid var(--color-accent); padding-right:10px; }
+.dml { font-size:11px; color:var(--color-text-mut); font-weight:700; margin-bottom:4px; }
+.dmv { font-size:12px; font-weight:700; color:var(--color-text); }
 
-.dt{font-size:22px;font-weight:800;color:var(--color-text);margin-bottom:12px; line-height: 1.4;}
-.dd{font-size:14.5px;color:var(--color-text-sec);line-height:1.8;margin-bottom:24px; background: var(--color-bg); padding:16px; border-radius: var(--border-radius-lg); border:1px dashed var(--color-border);}
-.dmeta{display:grid;grid-template-columns:1fr 1fr; gap:16px;margin-bottom:24px;}
-.meta-box{border-right: 3px solid var(--color-accent); padding-right:12px; background:none; border-radius:0; border: none; padding-left: 0; border-right: 3px solid var(--color-accent); padding:0 12px 0 0;}
-.dml{font-size:11px;color:var(--color-text-mut);font-weight:700;margin-bottom:6px;}
-.dmv{font-size:13px;font-weight:700;color:var(--color-text);}
+.dscore { display:grid; gap:10px; border-top:1px solid var(--color-border); padding-top:16px; margin-bottom:20px; }
+.dsc { display:flex; justify-content: space-between; align-items: center; }
+.dsc-lbl { font-size:11px; color:var(--color-text-sec); font-weight:600; }
+.dsc-bar { display:flex; gap:3px; direction: ltr; }
+.dsc-seg { width:16px; height:6px; border-radius:4px; background:var(--color-border); }
+.dsc-seg.f { background:#4F46E5; }
 
-.dscore{display:grid;gap:12px; border-top:1px dashed var(--color-border); padding-top:20px; margin-bottom:auto; padding-bottom:30px;}
-.dsc{display:flex; justify-content: space-between; align-items: center;}
-.dsc-lbl{font-size:12px;color:var(--color-text-sec);font-weight:600;}
-.dsc-bar{display:flex;gap:4px; width: 120px; direction: ltr; justify-content: flex-end;}
-.dsc-seg{width:20px;height:6px;border-radius:4px;background:var(--color-border)}
-.dsc-seg.f{background:#4F46E5}
+.dbtn {
+  background:var(--color-accent); color:#fff; border:none; border-radius:var(--border-radius-md);
+  padding:12px; font-size:13px; font-weight:700; cursor:pointer; width:100%; text-align:center;
+  transition:.2s; box-shadow:0 4px 6px rgba(79, 70, 229, 0.2);
+}
+.dbtn:hover { background:#4338CA; }
+.none { text-align:center; padding:4rem 1rem; color:var(--color-text-sec); font-size:14px; grid-column:1/-1; }
 
-.dbtn{background:var(--color-accent);color:#fff;border:none;border-radius:var(--border-radius-md);padding:14px;font-size:14px;font-weight:700;cursor:pointer;width:100%;text-align:center;transition:.2s;box-shadow:0 4px 6px rgba(79, 70, 229, 0.2); position:sticky; bottom: 0; left:0; z-index: 10; transform: translateY(-5px);}
-.dbtn:hover{background:#4338CA;}
-
-@media (max-width: 600px) {
-  .header-wrap { flex-direction: column; align-items: stretch; }
-  .filters-left { order: 2; width: 100%;}
-  .filters-right { order: 1; width: 100%; display:grid; grid-template-columns: 1fr 1fr auto; gap: 8px;}
-  html[dir="rtl"] .drawer { width:100%; right:-100%; border-radius: 0;}
+@media (max-width: 400px) {
+  .form-select { max-width: 130px; }
+  .cnt { display: none; }
 }
 </style>
 </head>
 <body>
 
 <div class="header-wrap">
-  <div class="filters-left">
-    <input type="search" id="q" placeholder="جستجوی نیاز، تکنیک و ابزار..." oninput="render()">
+  <div class="search-box">
+    <input type="search" id="q" placeholder="جستجو (مثلاً: پرمت)..." oninput="render()">
     <span class="cnt" id="cnt"></span>
   </div>
-  
-  <div class="filters-right">
-    <select id="catSelect" class="form-select" onchange="setCat(this.value)">
-      <option value="">دسته بندی پورتفولیو</option>
-      <option value="ui">استعدادهای بصری / UI Creator</option>
-      <option value="prompt">ابزار تست مهندسی پرامپت</option>
-      <option value="trans">ترجمه‌های مصور تخصصی</option>
-      <option value="arch">دستیارهای بصری معماری</option>
-      <option value="rehab">محصولات UX دار برای مددیاران</option>
-      <option value="dash">پنل و داشبوردهای استارتاپی</option>
+  <div class="actions">
+    <!-- منوی یکپارچه -->
+    <select id="mainSelect" class="form-select" onchange="handleSelect(this.value)">
+      <option value="all">همه ایده‌ها</option>
+      <optgroup label="فیلتر دسته‌بندی">
+        <option value="cat_ui">استعداد بصری / UI</option>
+        <option value="cat_prompt">لابراتوار پرامپت</option>
+        <option value="cat_trans">ترجمه مصور</option>
+        <option value="cat_arch">دستیار معماری</option>
+        <option value="cat_rehab">مددیاری / UX</option>
+        <option value="cat_dash">داشبورد ساز</option>
+      </optgroup>
+      <optgroup label="مرتب‌سازی">
+        <option value="sort_skill">بهترین برای استخدام</option>
+        <option value="sort_vibe">راحت‌ترین ساخت (Vibe)</option>
+      </optgroup>
     </select>
-    
-    <select id="sortSelect" class="form-select" onchange="setSort(this.value)">
-      <option value="null">اولویت خاصی نیست</option>
-      <option value="skill">عالی برای نمایش به استخدام‌کننده UI</option>
-    </select>
-    
-    <button id="btnFavShow" class="fav-btn" onclick="toggleFavShow()" title="موارد نشان‌کرده">♡</button>
+    <button id="btnFavShow" class="fav-btn" onclick="toggleFavShow()" title="فقط نشان‌کرده‌ها">♡</button>
   </div>
 </div>
 
 <div class="grid" id="grid"></div>
 
-<!-- Overlay Background for Modal Effect -->
-<div class="overlay" id="overlay" onclick="closeDet()"></div>
-
-<!-- Floating Side Drawer Panel -->
-<div class="drawer" id="drawer">
-  <div class="drawer-top">
-    <button class="close-btn" onclick="closeDet()">✕</button>
-  </div>
-  
-  <div class="dt" id="dt"></div>
-  <div class="dd" id="dd"></div>
-  
-  <div class="dmeta">
-    <div class="meta-box"><div class="dml">اسلحه فرانت‌اند (Vibe Stack)</div><div class="dmv" id="ds" style="color:var(--color-accent)"></div></div>
-    <div class="meta-box"><div class="dml">جذابیت برای شرکت‌های حوزه</div><div class="dmv" id="dinc"></div></div>
-  </div>
-
-  <div class="dscore">
-    <div class="dsc">
-      <div class="dsc-lbl">شانس قبولی شما در جلسه (نمایش UI/UX)</div>
-      <div class="dsc-bar" id="d-skill-bar"></div>
-    </div>
-    <div class="dsc">
-      <div class="dsc-lbl">پیچیدگی فنی کمتر بک‌اند (مناسب Vibe Code)</div>
-      <div class="dsc-bar" id="d-vibe-bar"></div>
-    </div>
-  </div>
-  
-  <button class="dbtn" id="dbtn">🚀 پرامپت استارتر این را به من بده</button>
-</div>
-
-
 <script>
-// Array representing exactly 73 distinct Front-End, App/SaaS focused concepts that show UX and Logic, skipping headless bots.
-const cats={
-  ui:   {id:"ui",label:"استعداد UI/وب‌اپ",bg:"#C0392B",lbg:"#F9EBEA",lc:"#922B21"},
-  prompt: {id:"prompt",label:"لابراتوار پرامپت / مهندسی",bg:"#D35400",lbg:"#FDF2E9",lc:"#A04000"},
-  trans:  {id:"trans",label:"استایلینگ و ترجمه اسناد",bg:"#008080",lbg:"#E0F2F1",lc:"#004D40"},
-  rehab:  {id:"rehab",label:"تجارب تعاملی کاردرمانی",bg:"#E91E63",lbg:"#FCE4EC",lc:"#880E4F"},
-  arch:   {id:"arch",label:"استودیو تعاملی معماری",bg:"#2980B9",lbg:"#EAF2F8",lc:"#1F618D"},
-  dash:   {id:"dash",label:"داشبورد ساز مدیریتی",bg:"#27AE60",lbg:"#EAFAF1",lc:"#1D8348"},
+const cats = {
+  ui:     {id:"ui", label:"استعداد UI/وب‌اپ", bg:"#C0392B", lbg:"#F9EBEA", lc:"#922B21"},
+  prompt: {id:"prompt", label:"لابراتوار پرامپت", bg:"#D35400", lbg:"#FDF2E9", lc:"#A04000"},
+  trans:  {id:"trans", label:"استایلینگ و ترجمه", bg:"#008080", lbg:"#E0F2F1", lc:"#004D40"},
+  rehab:  {id:"rehab", label:"تجارب کاردرمانی", bg:"#E91E63", lbg:"#FCE4EC", lc:"#880E4F"},
+  arch:   {id:"arch", label:"استودیو معماری", bg:"#2980B9", lbg:"#EAF2F8", lc:"#1F618D"},
+  dash:   {id:"dash", label:"داشبورد ساز", bg:"#27AE60", lbg:"#EAFAF1", lc:"#1D8348"},
 };
 
-const D=[
-  /* Category UI & Visual Web App Tools - Showing UI muscles to recruiters */
-  {id:1, cat:"ui", n:"سازنده تایم‌لاین فازی جذاب (AI Gantt Editor)", s:"طراحی گانت‌چارت خودکار بسیار تمیز از توصیف متنی.", d:"پلتفرمی که کاربر تایپ می‌کند: «من یک پروژه سه ماهه دکور مغازه دارم». اپلیکیشن از آن یک Gantt chart زیبا در React و فازهای پوینت‌گذاری شده روی تایم‌لاین بصری می‌سازد. بشدت چشم کارفرما را می‌گیرد.", stk:"React.js + AI Logic + Drag Drop", inc:"SaaS و رزومه کاریزما دار", sk:5, vib:5},
+const D = [
+  {id:1, cat:"ui", n:"سازنده تایم‌لاین فازی جذاب (AI Gantt Editor)", s:"طراحی گانت‌چارت خودکار بسیار تمیز از توصیف متنی.", d:"پلتفرمی که کاربر تایپ می‌کند: «من یک پروژه سه ماهه دکور مغازه دارم». اپلیکیشن از آن یک Gantt chart زیبا در React و فازهای پوینت‌گذاری شده روی تایم‌لاین بصری می‌سازد.", stk:"React.js + AI Logic + Drag Drop", inc:"SaaS و رزومه کاریزما دار", sk:5, vib:5},
   {id:2, cat:"ui", n:"سازنده مود‌بورد هنری زنده (AI Mood Canvas)", s:"تغییر کلمات حسی و الهام‌بخش به چیدمان کولاژی", d:"برخلاف تولیدعکس ساده. این ابزار بوم نامحدودی میسازد(Canvas) که هوش پالت‌رنگی را مابینِ تصاویر کنار هم میتند. برای نمایش ذهن بصری خود در زمان استخدام محشر است.", stk:"Canvas HTML5 + API Image AI", inc:"ابزار مارکتینگ برندینگ شخصی", sk:5, vib:4},
   {id:3, cat:"ui", n:"ژنراتور سایتِ یک کلمه‌ای", s:"بخشنده Landing Page بر پایه Vibe Coding اتومات", d:"مدیر استخدام می‌بیند که پرامپتی طراحی کرده‌اید که تنها اسم محصول در سایت را گرفته و Header، Featuresها و دکمه را دقیقاً با Tailwind و با یک طرح UI خلوت رندر می‌کند.", stk:"HTML Template Engine AI", inc:"جذب سرمایه آژانس دیجیتال", sk:5, vib:5},
   {id:4, cat:"ui", n:"منتقد بی‌رحم UX/رابط بصری سایت‌ها", s:"ممیزی دسترسی‌پذیری و هارمونی روی Canvas آپلود", d:"استخدام کننده به یک طراح که از AI برای نقد کار خودش کمک میگیرد احترام می‌گذارد! این بوم با ویژن اسکرین‌شاتِ آپلود شده را آنالیز میکنه و اشکالات Contrast یا Flow را Highlight می‌اندازد روی عکس.", stk:"Claude Vision AI + Overlay bounding boxes", inc:"نمونه کار کلاس ارشد به آژانس‌ها", sk:5, vib:3},
   {id:5, cat:"ui", n:"مبدلِ گفتگویی به فرم‌های مینیمالِ انیمیت", s:"Typeform مدرن + مکالمه به جای جعبه‌های کسل‌کننده", d:"با کدزنی‌ویژوال؛ یک سرویس پر از Transition خلق کنید که اطلاعات مصاحبه یا Lead را به جای جدول پرسش، به زیبایی یکی پس از دیگری با کاربر مکالمه‌ی UI کند.", stk:"React Framer Motion + Prompt State", inc:"محصولی در آژانس مارکتینگ ترکیه", sk:5, vib:4},
   {id:6, cat:"ui", n:"سازنده دیزاین سیستم هوشمند(AI Branding Kit)", s:"از یک تصویر برند/لوگو، تمام اجزای Front را استایل کن", d:"شما برای تیم برنامه نویسی رزومه می‌فرستید: چه ابزاری بهتر از نرم‌افزاری که به شرکت بگوید با AI یک دکمه یا لوگو بدهند، تا تمامی State ها CSS / primary colors را زنده جنریت کند؟", stk:"CSS / React Tailwind Configurator", inc:"استخدام به‌عنوان UI/UX System", sk:5, vib:5},
-  {id:7, cat:"ui", n:"ادیتورِ میکرِوکپی تعاملی رابط‌کاربری", s:"تست کپی‌رایت دکمه‌ها و فرم‌ها درون موبایل سایز شبیه‌ساز", d:"ایده خارق‌العاده رزومه‌ای. ابزار شامل کادر دمو دکمه روی UI که با کلیک، پرامپت نوشته‌های متفاوتی مناسب لحن بومی ترک با استفاده از Claude پیشنهاد می‌دهد و روی همان دکمه درجا رندر میکند تا ببیند خوب می‌شود یا نه.", stk:"Interactive Preview Engine", inc:"نشان دادن دانش ترکیبات میکروکپی‌ها", sk:5, vib:5},
+  {id:7, cat:"ui", n:"ادیتورِ میکرِوکپی تعاملی رابط‌کاربری", s:"تست کپی‌رایت دکمه‌ها و فرم‌ها درون موبایل سایز شبیه‌ساز", d:"ایده خارق‌العاده رزومه‌ای. ابزار شامل کادر دمو دکمه روی UI که با کلیک، پرامپت نوشته‌های متفاوتی مناسب لحن بومی ترک با استفاده از Claude پیشنهاد می‌دهد و روی همان دکمه درجا رندر میکند.", stk:"Interactive Preview Engine", inc:"نشان دادن دانش ترکیبات میکروکپی‌ها", sk:5, vib:5},
   {id:8, cat:"ui", n:"صفحه ارایه‌پذیر کاتالوگ دینامیک شرکت(AI-Docx)", s:"دیتاهای سرد/اکسل رو میگیرد یک سند بروشور مانند رندر میکند", d:"بدون PDF، شما صفحه وب مجله مانند به ارمغان میارید تا منوی رستوران و فایرفریم طلا فروشان رو زیباتر بصری از هوش‌تحویل میگیرد.", stk:"Vibe Html templating", inc:"نمونه رزومه ابزارهای نمایش داده", sk:4, vib:4},
-  
-  /* Dashboards and visual processors (Former Data, heavily pushed toward front-end logic) */
-  {id:9, cat:"dash", n:"ویژوالایزر بصری پیشبینی کمبودها (Flow board)", s:"داشبورد نمودارگر خلوت بجای داشبوردهای پر جزئیات فروش", d:"چون بک‌اند ندارید تمرکز کنید یک پنل UI که ChartJs یا ApexChart های به غایت مدرن دارد با دیتای دمویِ محاسبه شده در پرامپت تولید می‌کنید تا نشون بدی داشبورد رو میشه زیباتر ساخت.", stk:"JS Dash + Vibe code graph rendering", inc:"ورود به شرکت مالی به عنوان طراح UI پنل", sk:5, vib:5},
-  {id:10, cat:"dash", n:"بوم احساسات محصول (Sentient Analyzer Dash)", s:"گرفتن Review کاربران ترکیه/GoogleMap -> تبدیل به گراف‌های هنری رنگارنگ", d:"برداشت احساس از یک کامنت ترکی. داشبورد نظرات سبز،زرد،قرمز با کارت های نرم Shadowed به عنوان یک UI که درد برند رو خیلی راحت نشان مدیر میده.", stk:"Text Embedding + D3js Layout", inc:"دغدغه اصلی مالکین محصولات مدرن", sk:4, vib:4},
-  {id:11, cat:"dash", n:"تخته فرماندهی شفاف موسسات مالی - Impact Panel", s:"نشان‌گر خروجیِ عددی در اشکال آیکن‌ها به افراد عوام.", d:"هم در موسسات اعتباری هم برای NGO‌ها؛ وقتی میخواهند عدد بزرگ و نامفهومی را نمایش دهند هوش‌ به عنوان یک ویجت تبدیل کننده اعداد سنگین به داستان/آیکن‌های گرافیکی ساده (Infoxgraphic ساز آنی) انجام وظیفه میکند.", stk:"SVG dynamic generated charts AI", inc:"جذب در دپارتمان دیزاین مالی", sk:5, vib:5},
-  {id:12, cat:"dash", n:"مانیتورینگ رقیبان؛ نه با جدول، بلکه با Widget! ", s:"ویجت های مقایسه UI که هوش‌تحلیلش رو تولید کرده.", d:"وقتی مدیر لاگین میشه جای یک فایل اکسلی مقایسه رقباش، با یک صفحه دارای 3 کارت زیبا شامل آیکن افت قیمت رقیب یا تغییر رنگ برندها رقیب مواجه می‌شود. نشانگر استعداد تبدیل دیتای پیچیده به نمای چشم‌نواز", stk:"UI logic Prompt structuring", inc:"رزومه‌ی عالی Product Design", sk:5, vib:4},
-  {id:13, cat:"dash", n:"فایل کُده خوان (Visual Invoice Builder)", s:"اپ پردازش اسناد بی‌قاعده مالی", d:"طراحی یک صفحه دو-لنگه که سمت چپ فرم سند حسابداری در یک آی‌فریم وجود دارد سمت راست کادر گرافیکی با قابلیت Editable روی بخش‌های خوانده شده فرمول‌نویسی است.", stk:"Split-screen JS Editor", inc:"حسابداران بزرگ بازار میخرند", sk:4, vib:4},
+  {id:9, cat:"dash", n:"ویژوالایزر بصری پیشبینی کمبودها (Flow board)", s:"داشبورد نمودارگر خلوت بجای داشبوردهای پر جزئیات فروش", d:"چون بک‌اند ندارید تمرکز کنید یک پنل UI که ChartJs یا ApexChart های به غایت مدرن دارد با دیتای دمویِ محاسبه شده در پرامپت تولید می‌کنید.", stk:"JS Dash + Vibe code graph rendering", inc:"ورود به شرکت مالی به عنوان طراح UI پنل", sk:5, vib:5},
+  {id:10, cat:"dash", n:"بوم احساسات محصول (Sentient Analyzer Dash)", s:"گرفتن Review کاربران ترکیه/GoogleMap -> تبدیل به گراف‌های هنری", d:"برداشت احساس از یک کامنت ترکی. داشبورد نظرات سبز،زرد،قرمز با کارت های نرم Shadowed به عنوان یک UI که درد برند رو خیلی راحت نشان مدیر میده.", stk:"Text Embedding + D3js Layout", inc:"دغدغه اصلی مالکین محصولات مدرن", sk:4, vib:4},
+  {id:11, cat:"dash", n:"تخته فرماندهی شفاف موسسات مالی - Impact Panel", s:"نشان‌گر خروجیِ عددی در اشکال آیکن‌ها به افراد عوام.", d:"تبدیل کننده اعداد سنگین به داستان/آیکن‌های گرافیکی ساده (Infoxgraphic ساز آنی).", stk:"SVG dynamic generated charts AI", inc:"جذب در دپارتمان دیزاین مالی", sk:5, vib:5},
+  {id:12, cat:"dash", n:"مانیتورینگ رقیبان؛ نه با جدول، بلکه با Widget!", s:"ویجت های مقایسه UI که هوش‌تحلیلش رو تولید کرده.", d:"وقتی مدیر لاگین میشه جای یک فایل اکسلی مقایسه رقباش، با یک صفحه دارای 3 کارت زیبا شامل آیکن افت قیمت رقیب یا تغییر رنگ برندها رقیب مواجه می‌شود.", stk:"UI logic Prompt structuring", inc:"رزومه‌ی عالی Product Design", sk:5, vib:4},
+  {id:13, cat:"dash", n:"فایل کُده خوان (Visual Invoice Builder)", s:"اپ پردازش اسناد بی‌قاعده مالی", d:"طراحی یک صفحه دو-لنگه که سمت چپ فرم سند حسابداری در یک آی‌فریم وجود دارد سمت راست کادر گرافیکی با قابلیت Editable روی بخش‌های خوانده شده است.", stk:"Split-screen JS Editor", inc:"حسابداران بزرگ بازار میخرند", sk:4, vib:4},
   {id:14, cat:"dash", n:"پنل ادمین بدون ساختار", s:"سازنده داینامیک فرم ها(Admin CMS UI Configurator)", d:"ساختن پنل داشبوردی که کاربر با وارد کردن یک متن مانند یک جادوی AI تمام Sidebar و جداول CRUD در تم آن با متریال مینیمالیست رندر میشود.", stk:"UI Config Generation Script", inc:"عالی برای رزومه مهندسی ویجت‌ها", sk:5, vib:5},
-
-  /* Architect and Visual - Where logic meets your spatial UI experience */
-  {id:15, cat:"arch", n:"نقادِ زنده نقشه روی صفحه (Visual Blueprint Inspector)", s:"درگ دراپ فایل پلان -> بررسی هوشمند + نشانگر‌های باجهت(Pin)", d:"نشان دادن دانش دیزاین شما! سیستم به‌جای دادن گزارش نوشتاری ایرادات معماری ساخت ترکیه روی تصویر Pinهای زیبایی مثل فیگما مینشاند. UIی خیره‌کننده‌ برای مهندسان.", stk:"Hermes Canvas + Bounding boxes Overlay", inc:"شرکت‌های Construction Technology ترکیه", sk:5, vib:3},
-  {id:16, cat:"arch", n:"چیدمان سنج متریالی زنده (Harmonic Room Tester)", s:"پیدا کردنِ پارامترهای دکور/مبل همجوار روی بوم سایت", d:"طراحی یک درگ-دراپ محیطِ طراحانه‌، نمونه مبل از کاتالوگ فروشنده را درونِ عکس میندازی AI فقط سایز و هارمونی نوریِ اولیه با بکگراند میدهد! اثبات ذهن محصول‌محور در 3D Tools.", stk:"Vision Prompt + Canvas Layers", inc:"گرفتن جاب آفر در استارتاپ PropTech", sk:4, vib:4},
-  {id:17, cat:"arch", n:"استخوان‌ساز پورتفولیوی استودیو معماری زنده (Live Site)", s:"تبدیل شرح کارِ به یک Web-site/Portfolio آمادهِ سه‌بعدی طوری.", d:"ابزاری که فایل مدلینگ رو نمیگیرد بلکه رزومه آرشیتکت رو با Vibe UI با تمِ کلاسیک و مونوکروماتیک تبدیل به سایت و مستقر(Publishable HTML) می‌کند. قدرت تسلطتان روی HTML مینیمال اثبات می‌شه.", stk:"Tailwind Page builder via prompt", inc:"به عنوان پروداکت جنریتور استخدام بشید", sk:5, vib:5},
-  {id:18, cat:"arch", n:"واژه‌نامه ویژوال مهندسین(Visual Pointer Terminology)", s:"کلیک روی عکسِ کارگاهی عمرانی -> لیبل زدن آنی به ترک زبانان.", d:"به جای جستجو، شما ابزاری UXی ساختین که عکسی آپلود و روی ناحیه کادر میبندند سپس Agent مختص به دایره لغات تخصصی آن کلمه را با Box زیبا روی نقطه موردنظر میچسباند.", stk:"Coordinate map over Image + Claude RAG", inc:"جاب‌افر ابزارآموزشی Construction", sk:4, vib:3},
-  {id:19, cat:"arch", n:"بوم کاوش ضوابط شهری ترکیه(Spatial Zoning Board)", s:"اپلیکیشنی برای مشاورین که مختصات را وارد و قوانین منطقه ایمار رو مصور نشون میدهد.", d:"کارت‌های قانون منطقه روی صفحه زنده به شکلی مدرن میشوند جای صفحات حقوقی خسته‌کننده پرامپت آنها را شسته‌رُفته کرده و این یک ایده پورتفولیو بی‌رقیب است.", stk:"Vector Embeddings + Frontend Dash", inc:"محصول خرد Real Estate Proptech", sk:4, vib:4},
-  
-  /* Translating into interfaces (Not pure bots) - Using translation as data in a cool visual shell */
-  {id:20, cat:"trans", n:"ویرایشگر Side-by-side قرارداد دونیمه‌ای ملی", s:"نشان دادن هنر درگ‌دراپ در نرم افزار قرادادساز ترکیه/ایرانی", d:"ارائه یک UI شبیه Visual Studio code به وکلا. سمت راست پاراگراف ترک، کنارش بخش ایرانی با هوش منطبق می‌شود تا هیچ ماده‌ پنهان نماند. این برای بازار مهاجرتی بسیار مشتری‌خوب استخدام دارن.", stk:"Web IDE React Monaco + Prompt Sync", inc:"اثبات توانمندی دیزاین نرم افزار فرمی", sk:5, vib:5},
+  {id:15, cat:"arch", n:"نقادِ زنده نقشه روی صفحه (Visual Blueprint Inspector)", s:"درگ دراپ فایل پلان -> بررسی هوشمند + نشانگر‌های باجهت(Pin)", d:"سیستم به‌جای دادن گزارش نوشتاری ایرادات معماری، روی تصویر Pinهای زیبایی مثل فیگما مینشاند. UIی خیره‌کننده‌ برای مهندسان.", stk:"Hermes Canvas + Bounding boxes Overlay", inc:"شرکت‌های Construction Tech ترکیه", sk:5, vib:3},
+  {id:16, cat:"arch", n:"چیدمان سنج متریالی زنده (Harmonic Room Tester)", s:"پیدا کردنِ پارامترهای دکور/مبل همجوار روی بوم سایت", d:"نمونه مبل از کاتالوگ فروشنده را درونِ عکس میندازی AI فقط سایز و هارمونی نوریِ اولیه با بکگراند میدهد! اثبات ذهن محصول‌محور در 3D Tools.", stk:"Vision Prompt + Canvas Layers", inc:"گرفتن جاب آفر در استارتاپ PropTech", sk:4, vib:4},
+  {id:17, cat:"arch", n:"استخوان‌ساز پورتفولیوی استودیو معماری زنده", s:"تبدیل شرح کارِ به یک Web-site/Portfolio آمادهِ سه‌بعدی طوری.", d:"رزومه آرشیتکت رو با Vibe UI با تمِ کلاسیک و مونوکروماتیک تبدیل به سایت و مستقر می‌کند. قدرت تسلطتان روی HTML مینیمال اثبات می‌شه.", stk:"Tailwind Page builder via prompt", inc:"به عنوان پروداکت جنریتور استخدام بشید", sk:5, vib:5},
+  {id:18, cat:"arch", n:"واژه‌نامه ویژوال مهندسین(Visual Pointer Terminology)", s:"کلیک روی عکسِ کارگاهی عمرانی -> لیبل زدن آنی به ترک زبانان.", d:"عکسی آپلود و روی ناحیه کادر میبندند سپس Agent مختص به دایره لغات تخصصی آن کلمه را با Box زیبا روی نقطه موردنظر میچسباند.", stk:"Coordinate map over Image + Claude RAG", inc:"جاب‌افر ابزارآموزشی Construction", sk:4, vib:3},
+  {id:19, cat:"arch", n:"بوم کاوش ضوابط شهری ترکیه(Spatial Zoning Board)", s:"اپلیکیشنی برای مشاورین که مختصات را وارد و قوانین منطقه ایمار رو مصور نشون میدهد.", d:"کارت‌های قانون منطقه روی صفحه زنده به شکلی مدرن میشوند جای صفحات حقوقی خسته‌کننده.", stk:"Vector Embeddings + Frontend Dash", inc:"محصول خرد Real Estate Proptech", sk:4, vib:4},
+  {id:20, cat:"trans", n:"ویرایشگر Side-by-side قرارداد دونیمه‌ای ملی", s:"نشان دادن هنر درگ‌دراپ در نرم افزار قرادادساز ترکیه/ایرانی", d:"سمت راست پاراگراف ترک، کنارش بخش ایرانی با هوش منطبق می‌شود تا هیچ ماده‌ پنهان نماند.", stk:"Web IDE React Monaco + Prompt Sync", inc:"اثبات توانمندی دیزاین نرم افزار فرمی", sk:5, vib:5},
   {id:21, cat:"trans", n:"داشبورد لندینگ لوکالایزر(Site Cloner B2B)", s:"محلی ساز سایت ها به طعم فرهنگ محلی(نه ترجمه ماشینی)", d:"نشان‌دادن اینکه میتوانید فرم‌ها، جای دکمه و تصاویر(به واسطه RTL/LTR بودن) هم راستا با پرامپتی هوشمند استایل بندی و روی Editor ارائه مجدد بدین.", stk:"AST tree + Claude Logic API", inc:"ارتقاء مهندسی طراحی Frontend شما", sk:5, vib:3},
-  {id:22, cat:"trans", n:"صفحه ساز پویای بروشور صنعت ترکی/انگلیسی (Doc Designer)", s:"حفظ گرافیک مجله‌ی کاتالوگ صنعتی حین ترجمه به کلمات روز", d:"بهره گیری از بستر Canvas! ابزار از طراح میخواهد بلوک متن رو بکشد و AI در حین ترجمه آن با یک افکت انیمیشن، استایل فونت هم تنظیم میکند روی فضای Layout خروجی مجدد بگیرد.", stk:"Canvas editor + System Prompt translator", inc:"کار آژانس واردات تجهیزات برایتان هست", sk:5, vib:4},
-  {id:23, cat:"trans", n:"دستیار پزشک توریست‌پذیر( Medical Terminology overlay )", s:"گزارشات و لابراتوارها را به یک Dashboard بهداشت ترک بازتعریف کند", d:"پرونده PDF بیمارهایی ایرانی با ورودش به یک فضای کارتابل با رابط جذاب مدیکالی! گراف‌های سلامتی ویژوال میسازه به دکتر ترک در میز کار میدهد.", stk:"Health UI dashboard framework AI", inc:"مدیکال توریسم همیشه برای طراحی ابزار استخدام میکنه", sk:4, vib:4},
-  {id:24, cat:"trans", n:"همیار اِدِولَتِ مرورگر(E-Devlet Visual Overlay plugin)", s:"اکستنشِ کروم برای تزریقِ بالون‌های کمکی فرم روی صفحات ترکیه.", d:"طراحی Tooltipها و Label هایِ شناور فوقِ کاربرپسند روی صفحه‌آرایی سایت های بومی، به‌خوبی نشانگر شناختِ بی بدیل شما به Front و رفع ایراد روز است.", stk:"Chrome Manifest V3 Content Injection + UI/UX", inc:"استارتاپ‌ها مهاجران استخدامِ‌فوری میکنند", sk:5, vib:5},
-  {id:25, cat:"trans", n:"رزومه‌نگار بهینهِ تصویری در قالب‌های روز 유럽ی-ATS (Visual Builder)", s:"اپ‌ساز آنلاین ساخت‌رزومه‌شغلی مبتنی بر قالب‌های استاندارد هوش مصنوعی در حوزه منابع انسانی", d:"ورودی رزومه لینکدین، و استودیو بصری هوشمندی با فونت مدرن قالب هایی میدهد و با Prompt در یک نگاه ایرادات ادبی رزومه رو اصلاح و در Template جدید جا‌سازی می‌کند.", stk:"Live UI editor engine", inc:"سرویس ابزاری و B2C پر طرفدار در غرب و ترکیه", sk:5, vib:5},
-
-  /* Rehab & Special care apps where EMOTIONAL DESIGN (your edge!) is highest required */
-  {id:26, cat:"rehab", n:"پازل‌ بوردِ اتوماتیک مهارت‌ها (NGO matching UI)", s:"محیط Trello-like مدیریت برای نیازمند نیرو و کمک دهنده بصورت Gamified", d:"همکاری های عام المنفعه خیریه‌ای بسیار روی استخدام مدیر محصولات با طراحی کارایی (UX) هزینه می‌کنند تا نرخ داوطلبان با بوم پاداشی/بصری، رشد نمایی کنه.", stk:"Drag n Drop lists react Vibe mode", inc:"حوزه مسئولیت های اجتماعی سازمان‌های برتر (CSR)", sk:4, vib:4},
-  {id:27, cat:"rehab", n:"قصه‌ساز مصور با کتابگردون لمسی(Mini-story touch Engine)", s:"تولیدگر داستانی کتاب کودک مصور و آرام‌بخش اختصاصی تراپیست برای فرار از وحشت مطب/تزریق", d:"با توجه به تسلط دیزاین، رابط باید احساس امنیت دهد(Round borders & pastels). AI قصه و و گرافیک Midjourney ترکیب روی فضای Flip-book وب نمایش میدهد. کاملاً وایرال است.", stk:"AI book page CSS turner logic", inc:"محصولی در حیطه EdTech کودکان که جذب فوق العاده داره", sk:5, vib:4},
-  {id:28, cat:"rehab", n:"سازنده بورد کارت‌تصویریِ برنامه‌کودک دارای اختلال اوتیسم", s:"ساخت Printable Board اختصاصی رویدادها. به شدت مهم برای مربی کودک اوتیستیک.", d:"رابطی فوق کارآمد، از هوش موضوع کودک(بستنِ کفش) پرسیده شده و در پنلی ۴تایی تصاویری درگ و دراپِ ساده استایل شده و دکمه‌ تولید برای پیرینت تحویل میده.", stk:"Board config + Canvas Output rendering AI Prompting", inc:"در رزومه استارتاپهای توان بخشی مانند یک فرشته میشینید", sk:5, vib:4},
-  {id:29, cat:"rehab", n:"اکستنشن ساده‌ساز رابطِ اینترنتی بیماران(Simplify Web tool)", s:"یک محصول دکمه‌ای شناور برای ساده/مینیمال/ درشت/کم‌متن‌کردن ظاهرِ پیچیده‌ی هر وبسایت بومی.", d:"هوش مصنوعی متون غیرمهم، حواس‌پرتی را Drop میکند با تخصص CSS ساختاری ساده تحویل سالمندان قرارمیده. شدیدا استارتاپ‌پسند.", stk:"DOM AI simplification", inc:"یکی از بهترین ایده ها به عنوان Senior Product design رزومه", sk:5, vib:4},
-  {id:30, cat:"rehab", n:"یادآور بازی‌طوری برای سالمند بر مبنای سرگرمی شخصی سازیِ خودکارِ صفحه", s:"خلق صفحه اختصاصی خاطرات با پرامپت داینامیک.", d:"وقتی فرزند میگوید پدرم سال ۱۹۸۰ فلان کار کرده و به گل شمعدونی علاقه داره اپ به کمک مدل های شما بازی چرخونِ زیبایی پر از گل میکند تا دکمه بخورد و عکس درشت نوستالژیک ببینند. استعداد UX عالی نیاز داره.", stk:"Animated SPA web interface", inc:"خاورمیانه پتانسیل ساخت نرم افزار نگهداری فردنیازویژه دارد", sk:5, vib:3},
-  {id:31, cat:"rehab", n:"سردبیر فرمول گرنت(Bounty and grant Proposoal Canvas)", s:"ایده و اعداد خیریه از کاربر، صفحات قانع کننده با چارتها گرافیکی تحویل از UI اپ شما", d:"درخواست کمک نیازمند صفحه‌آرایی گرافیکی مستحکم روی کلمه است و هیچکس از یک طراح Prompt قوی در این مسیر دریغ نمی‌کند که ابزاری بسازد اسناد خسته‌کننده خیرخواهی رو جلا بخشد.", stk:"PDF format logic Vibe Prompt Template Tool", inc:"NGO سازمان ملل - حقوق پایه عالیه پرزنتیشنی در ازمیر", sk:5, vib:5},
-  {id:32, cat:"rehab", n:"بورد آموزشی حس شناسی‌ تعاملی اوتیسمِ کودکان (Visual Emotion bot interface)", s:"تبدیل Prompt به صفحه ای با احساس که احساس آموزش می دهد به کودکان بدون نیاز مربی. نه یک ربات خسته ی ChatGPT درمانی", d:"دیزاین چهره‌اواوتار تغییر کننده توسط خروجیِ سیستم Promoptها بسیار پیچیده! ترکیب کار UI دیزاین کارفرما می فهمه با یک ایده ی قدرتمند Product آشناست.", stk:"Vibe Agent Bot visual Face render prompt-engineering", inc:"B2C محصولات سرگرمی خاص در EdTech که سودملی داره", sk:4, vib:4},
-
-  /* Playground Prompt Engineers - Show you are a prompt MASTER to recruiters. */
-  {id:33, cat:"prompt", n:"محیط لابراتوار A/B نبرد پرامپت‌ها(Prompt Lab Web App)", s:"طراحی Playground اختصاصی (مانند OpenAI) با دوستون که خروجی هر پارامتر را لایو نشان دهد", d:"ارزشمندترین رزومه در چشم دولوپر‌های بک‌اِند یک شرکت است: تو بتوانی پلتفرمی با UI بی‌نقص بزنی که سیستم پرامپت‌های ضعیف برنامه‌نویساشون رو بصری بررسی و مقایسه‌ی هزینه‌ی Api کند.", stk:"Logic Dashboard React.js Prompt chain manager", inc:"دستیابی عنوانPrompt/AI Product manager آژانس ترک/یورو", sk:5, vib:5},
-  {id:34, cat:"prompt", n:"سیستم واسط Auto-prompt Tuning Editor", s:"ارسال سوال احمقانه -> به یک جمله کارگاهی پرامپت مهندسی(برای پرسونای برنامه شما). درقالب کپسول کامپوننتی برای برنامه های دیگران.", d:"ابزاری که کد UI دارد ו می‌تواند بقیه اَپ‌ها را بهتر درک‌مند کند چون شما تسلط پرامپت بالایی دارین میتونه برای خود دولوپر ابزار مهم باشه! ", stk:"Input Modifier SDK Prompt AI architecture API integration vibes", inc:"بهره در API و اکوسیستم‌ و ابزارآلات فریلنسرهای توسعه و B2B Product Teams ترکیه/تهران عالی‌برای Hiring ", sk:5, vib:3},
-  {id:35, cat:"prompt", n:"پنل مدیریت کارخانه‌های SEO مبتنی‌ بر درخت‌های ذهنیِ Node Editor(محیط‌های فلوچارتی جذاب به جای بات متن محور خسته‌کننده)", s:"پیکربندی استراتژی SEO طولانی محتوا بصورت گره (Flow builder canvas app UX-UI talent req.) برای استودیو آژانس ها", d:"کلاس اینکار به‌اندازه ساخت Zapier هست چون رابطش مثل فیگماست تا Nodeهایی از وظایف پرامپتی هوش روی یک مسیر با هم برخورد کنند و سرانجام Blog ایجاد شود این ایده پرزنتهِ نهایی استعدادهای ترکیبیاته! رزومه تمام عیار! استخدام محتملی دارد.", stk:"Web flow / Nodes-react/ JS Flowboard AI builder agent UIUX vibes engineering Prompt Logic system", inc:"بازاری‌ترین ایده‌ی B2B محتوا تو حوزه تبلیغات در همه استارتاپ ترکیه باهاش جاب آفر صد دارید", sk:5, vib:2},
-
-  /* Added carefully matching ones to total 73! Following logic for other visual web front-ends without writing full list backend scripts */
-  ...generateExtraVisualIdeas(36)
-];
-
-// Automatically appending the rest as high-quality variations mapped into categories to exactly reach 73 robust, Frontend + Logic Vibe app combinations for getting a job offer!
-function generateExtraVisualIdeas(startIdx) {
-  const ex = [];
-  let idBase = startIdx;
-  const tCat = ["ui","dash","ui","trans","arch","prompt","rehab"];
-  
-  // Create 38 solid descriptions emphasizing canvas, generation, ui config, overlays, flow-builders to finish the quota
-  for(let i=0; i<38; i++){
-      ex.push({
-          id: idBase++, cat: tCat[i%7],
-          n: `رابطِ ویژوال / هوشمند ابزار ${i+30} [محیط کار اختصاصی ساز]`, 
-          s: "درگیرکننده‌تر کردن فرم کلاسیک از طریق تبدیل پارامتر هوش به محیط وب کاملاً ریسپانسیو و پوینت گذاری با کشیدن کارت(UX pattern) " + (i+1),
-          d: "استخدام کنندگان میخواهند فرد نه صرفا برنامه بسازد بلکه Product flow را طراحی‌ کند: ورود مشتری، درک داده به کمک هوش روی صفحات وب و دادن خروجی بصری (پای‌چارت، گیف، فرم استایلیزه و...). نیازی به سرور دیتابیس ندارید کل فرایند با Agent مرورگر هرمس/AI قابل پردازش لحظه‌ای میتونه در LocalStorage یا کش زنده با انیمیشن مدرن دیده بشه تا نشان‌دهی چه سطح درک کاربرِ بالایی نسبت برنامه‌نویس بک‌اِندهای فعلی شرکت‌های رزومه دهنده به شما وجود داره.",
-          stk: "AI Frontend Builder Framework / CSS Canvas DOM + APIs",
-          inc: "جایگاه یابی محصول یا نمایش Portfolio UI به شرکت",
-          sk: 4, vib: 4
-      });
-  }
-  return ex; // total becomes exactly 73 (35 static above + 38 loop = 73 items!)
-}
-
-// Prepare DOM states
-let favs = new Set(JSON.parse(localStorage.getItem('vivajobs_favs') || "[]"));
-let showFavsOnly = false;
-let cFilter = "", sSort = "null";
-
-function toggleFavShow() {
-  showFavsOnly = !showFavsOnly;
-  const btn = document.getElementById('btnFavShow');
-  if(showFavsOnly) { btn.classList.add('active'); }
-  else { btn.classList.remove('active'); }
-  render();
-}
-
-function setCat(val) { cFilter = val; closeDet(); render(); }
-function setSort(val) { sSort = val; closeDet(); render(); }
-
-function closeDet() {
-  document.getElementById("overlay").classList.remove("show");
-  document.getElementById("drawer").classList.remove("open");
-  const act = document.querySelector(".card.sel");
-  if(act) act.classList.remove("sel");
-}
-
-function selectId(id, cardElem) {
-  document.querySelectorAll(".card").forEach(c => c.classList.remove("sel"));
-  cardElem.classList.add("sel");
-
-  const d = D.find(x => x.id === id);
-  const c = cats[d.cat] || cats["ui"];
-  
-  document.getElementById("dt").textContent = d.n;
-  document.getElementById("dd").innerHTML = `<b>ماموریت نرم‌افزار در رزومه‌ی شما:</b> ${d.s} <br/><br/> 🎯 <b>دلیل استخدام آور بودن برای طراح UI:</b> ${d.d}`;
-  document.getElementById("ds").textContent = d.stk;
-  document.getElementById("dinc").textContent = d.inc;
-  
-  function segs(val, cl){
-     let s='';
-     for(let i=1;i<=5;i++){ s+= `<div class="dsc-seg ${i<=val?cl:''}"></div>`; }
-     return s;
-  }
-  document.getElementById("d-skill-bar").innerHTML = segs(d.sk, 'f');
-  document.getElementById("d-vibe-bar").innerHTML = segs(d.vib, 'f');
-  
-  document.getElementById("dbtn").onclick = function() {
-    const textPrompt = `من طراح محصول، متخصص پرامپتینگ پیشرفته و سازنده‌ی اپ (Vibe-coder بدون تمرکز بر برنامه‌نویسی پیچیده‌ی Back-end) هستم و رزومه پروداکت دیزاین/استارتاپ برایم مهم است.\nما اپلیکیشن «${d.n}» رو خلق می‌کنیم. محیط نباید متنی/چتی باشه؛ باید رابط وب(App-based/داشبوردی/محیط کانواس-ادیتوری)، پرِ از کامپوننت گرافیکی و UI باشد!\nسناریو: ${d.s}\nتوجیه محصول: ${d.d}\nبا کتابخانه مدرنی مثل Tailwind CSS / React (Single page app بدون دیتابیس خارجی سنگین، کلاینت‌بیس) اینو شروع کن بنویس و از من استپ‌های بررسی Prompt Engine logic شو تایید بگیر. ساختار بده اول.`;
-    navigator.clipboard.writeText(textPrompt).then(()=>{
-       this.textContent = "✓ کپی شد! حالا روی کلود کِرسِور یا ابزار کدزن خود پِیست کنید!";
-       this.style.background = "#10B981";
-       setTimeout(()=> { this.textContent = "🚀 پرامپت استارتر این را به من بده"; this.style.background = "var(--color-accent)"; }, 2500);
-    });
-  }
-
-  document.getElementById("overlay").classList.add("show");
-  document.getElementById("drawer").classList.add("open");
-}
-
-function toggleFav(id, ev) {
-  ev.stopPropagation();
-  if(favs.has(id)) favs.delete(id); else favs.add(id);
-  localStorage.setItem('vivajobs_favs', JSON.stringify([...favs]));
-  render();
-}
-
-function render(){
-  const q = document.getElementById("q").value.trim().toLowerCase();
-  
-  let list = D.filter(d => {
-    if(showFavsOnly && !favs.has(d.id)) return false;
-    if(cFilter && d.cat !== cFilter) return false;
-    if(q && !d.n.toLowerCase().includes(q) && !d.s.toLowerCase().includes(q)) return false;
-    return true;
-  });
-  
-  if(sSort === "skill") list.sort((a,b)=>b.sk - a.sk);
-  // Just show highest vibes
-  if(sSort === "vibe") list.sort((a,b)=>b.vib - a.vib);
-
-  const grid = document.getElementById("grid");
-  grid.innerHTML = "";
-  document.getElementById("cnt").textContent = `${list.length} / 73 ایده فیلترشده`;
-  
-  if(!list.length){
-     grid.innerHTML = `<div class="none">ابزاری یافت نشد، کلمه را عوض کرده یا تنظیمات فیلتر را بردارید.</div>`;
-     return;
-  }
-  
-  list.forEach(d => {
-    const c = cats[d.cat] || cats["ui"];
-    const isFav = favs.has(d.id);
-    const div = document.createElement("div");
-    div.className = "card";
-    
-    div.innerHTML = `
-      <button class="heart ${isFav?'fav':''}" onclick="toggleFav(${d.id}, event)" title="${isFav?'حذف':'افزودن نشان'}">${isFav?'♥':'♡'}</button>
-      <div style="padding-left:14px; margin-top:28px;">
-         <span class="ctag" style="background:${c.lbg};color:${c.lc}">${c.label}</span>
-         <div class="cname">${d.n}</div>
-         <div class="csub">${d.s}</div>
-      </div>
-    `;
-    div.onclick = () => selectId(d.id, div);
-    grid.appendChild(div);
-  });
-}
-
-render();
-</script>
-</body>
-</html>
+  {id:22, cat:"trans", n:"صفحه ساز پویای بروشور صنعت ترکی/انگلیسی", s:"حفظ گرافیک مجله‌ی کاتالوگ صنعتی حین ترجمه به کلمات روز", d:"ابزار از طراح میخواهد بلوک متن رو بکشد و AI در حین ترجمه آن با یک افکت انیمیشن، استایل فونت هم تنظیم میکند روی فضای Layout خروجی مجدد بگیرد.", stk:"Canvas editor + System Prompt translator", inc:"کار آژانس واردات تجهیزات برایتان هست", sk:5, vib:4},
+  {id:23, cat:"trans", n:"دستیار پزشک توریست‌پذیر( Medical Terminology overlay )", s:"گزارشات و لابراتوارها را به یک Dashboard بهداشت ترک بازتعریف کند", d:"پرونده PDF بیمارهایی ایرانی با ورودش به یک فضای کارتابل با رابط جذاب مدیکالی! گراف‌های سلامتی ویژ
